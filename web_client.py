@@ -1,4 +1,3 @@
-import numpy as np
 import io
 import requests
 
@@ -18,17 +17,5 @@ class RemoteFile():
         self.bytesIO.seek(0)
         files = {'file': self.bytesIO}
         requests.post(self.url, files=files,
-                      data={'filename': 'dataset/data.npz'})
+                      data={'filename': self.filename})
         print('Data sent to server.')
-
-
-def example():
-    X = np.random.randint(0, 256, (30, 30))
-    y = np.random.randint(0, 1, 30)
-
-    with RemoteFile("localhost", 5000, "dataset/data.npz") as f:
-        np.savez(f, inputs=X, targets=y)
-
-
-if __name__ == "__main__":
-    example()
