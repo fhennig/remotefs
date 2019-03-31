@@ -16,16 +16,19 @@ A specific use case is if you want to calculate a dataset, but your
 storage computer doesn't have enough processing power and the
 processing server has a disk quota or a too small disk.
 
+It should probably be run locally and the actual connection between
+hosts would be an ssh tunnel.
+
 ## install
 
 ### server
 
 1. clone the repo
-2. python3 -m venv venv
-3. . ./venv/bin/activate
-4. pip install -r server_requirements.txt
-5. export FLASK_APP=flask_server.py
-6. flask run
+2. `python3 -m venv venv`
+3. `. ./venv/bin/activate`
+4. `pip install flask`
+5. `export FLASK_APP=flask_server.py`
+6. `flask run`
 
 
 ### client
@@ -33,7 +36,9 @@ processing server has a disk quota or a too small disk.
 copy the web_client.py file
 install requests
 
+```
 from web_client import RemoteFile
 
 with RemoteFile("host", 5000, "path/to/file.txt") as f:
     f.write(data)
+```
