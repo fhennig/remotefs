@@ -26,7 +26,7 @@ def example():
     X = np.random.randint(0, 256, (30, 30))
     y = np.random.randint(0, 1, 30)
 
-    with RemoteFile("dataset/data.npz") as f:
+    with RemoteFile("localhost", 5000, "dataset/data.npz") as f:
         np.savez(f, inputs=X, targets=y)
 
 
