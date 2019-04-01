@@ -22,6 +22,7 @@ def file_io():
         if 'filename' not in request.form:
             return 'ERROR 2'
         filename = request.form['filename']
+        print("Saving file: {}".format(filename))
         full_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         ensure_dir(full_path)
         file.save(full_path)
